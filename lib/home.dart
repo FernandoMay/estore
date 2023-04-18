@@ -14,6 +14,7 @@ class _MyHomePageState extends State<MyHomePage> {
   List<String> _searchHistory = [];
   final TextEditingController _searchController = TextEditingController();
   List<ItemElement> _searchResult = [];
+  String ng = "No results found";
 
   Future _searchProducts(String query) async {
     final response = await http.get(
@@ -25,10 +26,10 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _searchResult = data
           .item.props.pageProps.initialData.searchResult.itemStacks[0].items;
-      print(_searchResult);
       if (!_searchHistory.contains(query)) {
         _searchHistory.add(query);
       }
+      ng = data.responseStatus + data.responseMessage;
     });
   }
 
@@ -58,12 +59,15 @@ class _MyHomePageState extends State<MyHomePage> {
               onSubmitted: (query) {
                 _searchProducts(query);
               },
+              onChanged: (query) {
+                _searchProducts(query);
+              },
             ),
           ),
           Expanded(
             child: _searchResult.isEmpty
-                ? const Center(
-                    child: Text('No results found'),
+                ? Center(
+                    child: Text(ng),
                   )
                 : ListView.builder(
                     itemCount: _searchResult.length,
