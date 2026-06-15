@@ -8,15 +8,15 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'estore',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      title: 'E-Store',
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        useMaterial3: true,
+        colorSchemeSeed: const Color(0xFF3F51B5),
+      ),
       home: const MyHomePage(),
     );
   }

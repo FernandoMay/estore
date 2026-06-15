@@ -7,10 +7,10 @@ class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  MyHomePageState createState() => MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class MyHomePageState extends State<MyHomePage> {
   List<String> _searchHistory = [];
   final TextEditingController _searchController = TextEditingController();
   List<ItemElement> _searchResult = [];
@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("estore"),
+        title: const Text("E-Store"),
       ),
       body: Column(
         children: [
